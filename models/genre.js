@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var genreSchema = mongoose.Schema({
   name: {
     type: String,
-    require: true
+    required: true
   },
   create_date: {
     type: Date,
@@ -19,3 +19,8 @@ var Genre = module.exports =  mongoose.model('Genre', genreSchema)
 module.exports.getGenres = function(callback, limit) {
   Genre.find(callback).limit(limit);
 };
+
+// Add Genre
+module.exports.addGenre = function(genre, callback) {
+  Genre.create(genre, callback);
+}
